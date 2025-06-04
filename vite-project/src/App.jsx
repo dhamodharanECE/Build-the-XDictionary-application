@@ -33,31 +33,37 @@ const App = () => {
   function handleInput(event) {
     setVal(event.target.value);
   }
-  return (
-    <>
+ return (
+  <>
     <div>
       <h1>Dictionary App</h1>
     </div>
-     <div>
-      <input type="text"  placeholder='Write a Something...' value={val} onChange={handleInput}/>
+
+    <div>
+      <input
+        type="text"
+        placeholder="Write a Something..."
+        value={val}
+        onChange={handleInput}
+      />
       <button onClick={handleSearch}>Search</button>
     </div>
-      <div>
-      <h3>Definition:</h3>
-      </div>
+
     <div>
-      { definition !== null && ( 
-         definition === 'Word not found in the dictionary.' ? (
+      {definition && definition !== "Word not found in the dictionary." && (
+        <>
+          <h3>Definition:</h3>
           <p>{definition}</p>
-        ) : (
-          <>
-           <p>{definition}</p>
-          </>
-        )
-        )}
-      </div>
-    </>
-  )
+        </>
+      )}
+
+      {definition === "Word not found in the dictionary." && (
+        <p>{definition}</p>
+      )}
+    </div>
+  </>
+);
+
 }
 
 export default App
