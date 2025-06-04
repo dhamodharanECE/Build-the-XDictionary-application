@@ -41,9 +41,10 @@ const App = () => {
      <div>
       <input type="text"  placeholder='Write a Something...' value={val} onChange={handleInput}/>
       <button onClick={handleSearch}>Search</button>
-      <h3>Definition:</h3>
     </div>
-
+      <div>
+      <h3>Definition:</h3>
+      </div>
     <div>
       { definition !== null && ( 
          definition === 'Word not found in the dictionary.' ? (
