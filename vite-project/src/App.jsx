@@ -8,48 +8,48 @@ const App = () => {
 
                       { word: "Component", meaning: "A reusable building block in React." },
 
-                      { word: "State", meaning: "An object that stores data for a component." }
+                      { word: "State", meaning: "An object that stores definition for a component." }
 
                   ]
-  const [definition, setDefinition] = useState("");
-  const [data, setData] = useState(null);
+  const [val, setVal] = useState("");
+  const [definition, setDefinition] = useState(null);
 
   const handleSearch = () => {
-    if(!definition.trim()){
-      setData(null);
+    if(!val.trim()){
+      setDefinition(null);
       return;
     }
   
-  const value = words.find(item => item.word.toLocaleLowerCase() === definition.toLocaleLowerCase());
+  const value = words.find(item => item.word.toLocaleLowerCase() === val.toLocaleLowerCase());
 
       if(value){
-        setData(value.meaning)
+        setDefinition(value.meaning)
       }
       else{
-        setData("Word not found in the dictionary.");
+        setDefinition("Word not found in the dictionary.");
       }
   }
 
   function handleInput(event) {
-    setDefinition(event.target.value);
+    setVal(event.target.value);
   }
   return (
     <>
     <div>
-      <h1>Dictionary App</h1>
+      <h1>Dictionary</h1>
     </div>
      <div>
-      <input type="text"  placeholder='Write a Something...' value={definition} onChange={handleInput}/>
+      <input type="text"  placeholder='Write a Something...' value={val} onChange={handleInput}/>
       <button onClick={handleSearch}>Search</button>
     </div>
 
     <div>
-      { data !== null && ( 
-         data === 'Word not found in the dictionary.' ? (
-          <p>{data}</p>
+      { definition !== null && ( 
+         definition === 'Word not found in the dictionary.' ? (
+          <p>{definition}</p>
         ) : (
           <>
-          <h3>Definition:</h3> <p>{data}</p>
+          <h3>Definition:</h3> <p>{definition}</p>
           </>
         )
         )}
