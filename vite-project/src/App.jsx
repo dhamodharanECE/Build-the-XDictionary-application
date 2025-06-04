@@ -36,7 +36,7 @@ const App = () => {
   return (
     <>
     <div>
-      <h1>Dictionary</h1>
+      <h1>Dictionary App</h1>
     </div>
      <div>
       <input type="text"  placeholder='Write a Something...' value={val} onChange={handleInput}/>
