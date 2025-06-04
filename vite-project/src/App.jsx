@@ -41,6 +41,7 @@ const App = () => {
      <div>
       <input type="text"  placeholder='Write a Something...' value={val} onChange={handleInput}/>
       <button onClick={handleSearch}>Search</button>
+      <h3>Definition:</h3>
     </div>
 
     <div>
@@ -49,7 +50,7 @@ const App = () => {
           <p>{definition}</p>
         ) : (
           <>
-          <h3>Definition:</h3> <p>{definition}</p>
+           <p>{definition}</p>
           </>
         )
         )}
