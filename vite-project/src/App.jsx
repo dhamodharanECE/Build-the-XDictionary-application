@@ -1,33 +1,59 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { useState } from'react'
+import React from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const words = [
+                      { word: "React", meaning: "A JavaScript library for building user interfaces." },
 
+                      { word: "Component", meaning: "A reusable building block in React." },
+
+                      { word: "State", meaning: "An object that stores data for a component." }
+
+                  ]
+  const [definition, setDefinition] = useState("");
+  const [data, setData] = useState(null);
+
+  const handleSearch = () => {
+    if(!definition.trim()){
+      setData(null);
+      return;
+    }
+  
+  const value = words.find(item => item.word.toLocaleLowerCase() === definition.toLocaleLowerCase());
+
+      if(value){
+        setData(value.meaning)
+      }
+      else{
+        setData("Word not found in the dictionary.");
+      }
+  }
+
+  function handleInput(event) {
+    setDefinition(event.target.value);
+  }
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <h1>Dictionary App</h1>
+    </div>
+     <div>
+      <input type="text"  placeholder='Write a Something...' value={definition} onChange={handleInput}/>
+      <button onClick={handleSearch}>Search</button>
+    </div>
+
+    <div>
+      { data !== null && ( 
+         data === 'Word not found in the dictionary.' ? (
+          <p>{data}</p>
+        ) : (
+          <>
+          <h3>Definition:</h3> <p>{data}</p>
+          </>
+        )
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
