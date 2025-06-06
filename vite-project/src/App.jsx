@@ -9,7 +9,7 @@ const App = () => {
   ];
   
   const [val, setVal] = useState("");
-  const [definition, setDefinition] = useState(null);
+  const [definition, setDefinition] = useState("");
 
   const handleSearch = () => {
     if (!val.trim()) {
