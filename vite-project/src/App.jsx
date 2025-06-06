@@ -24,7 +24,6 @@ const App = () => {
 
       if(value){
         setDefinition(value.meaning)
-        console.log(meaning)
       }
       else{
         setDefinition("Word not found in the dictionary.");
