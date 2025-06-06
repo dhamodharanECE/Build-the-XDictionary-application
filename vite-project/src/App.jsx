@@ -4,13 +4,13 @@ import React from 'react'
 
 const App = () => {
   const words = [
-                      { word: "React", meaning: "A JavaScript library for building user interfaces." },
+                  { word: "React", meaning: "A JavaScript library for building user interfaces." },
 
-                      { word: "Component", meaning: "A reusable building block in React." },
+                  { word: "Component", meaning: "A reusable building block in React." },
 
-                      { word: "State", meaning: "An object that stores definition for a component." }
+                  { word: "State", meaning: "An object that stores definition for a component." }
 
-                  ]
+                  ];
   const [val, setVal] = useState("");
   const [definition, setDefinition] = useState(null);
 
@@ -24,9 +24,11 @@ const App = () => {
 
       if(value){
         setDefinition(value.meaning)
+        console.log(meaning)
       }
       else{
         setDefinition("Word not found in the dictionary.");
+        console.log("Word not found in the dictionary.")
       }
   }
 
@@ -47,12 +49,12 @@ const App = () => {
         onChange={handleInput}
       />
       <button onClick={handleSearch}>Search</button>
+       <h3>Definition:</h3>
     </div>
 
     <div>
       {definition && definition !== "Word not found in the dictionary." && (
         <>
-          <h3>Definition:</h3>
           <p>{definition}</p>
         </>
       )}
