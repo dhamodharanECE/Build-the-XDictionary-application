@@ -1,36 +1,32 @@
-import './App.css'
-import { useState } from'react'
-import React from 'react'
+import { useState } from 'react';
+import './App.css';
 
 const App = () => {
- const words = [
+  const words = [
     { word: "React", meaning: "A JavaScript library for building user interfaces." },
     { word: "Component", meaning: "A reusable building block in React." },
-    { word: "State", meaning: "An object that stores definition for a component." }
+    { word: "State", meaning: "An object that stores data for a component." }
   ];
   
   const [val, setVal] = useState("");
   const [definition, setDefinition] = useState(null);
 
   const handleSearch = () => {
-    if(!val.trim()){
-      setDefinition(null);
+    if (!val.trim()) {
+      setDefinition("Please enter a word to search");
       return;
     }
   
-    const value = words.find(item => item.word.toLocaleLowerCase() === val.toLocaleLowerCase());
+    const foundWord = words.find(
+      item => item.word.toLowerCase() === val.toLowerCase()
+    );
 
-    if(value){
-      setDefinition(value.meaning)
-    }
-    else{
-      setDefinition("Word not found in the dictionary.");
-    }
-  }
-
-  function handleInput(event) {
-    setVal(event.target.value);
-  }
+    setDefinition(
+      foundWord 
+        ? foundWord.meaning 
+        : "Word not found in the dictionary."
+    );
+  };
 
   return (
     <div className="dictionary-app">
@@ -41,25 +37,25 @@ const App = () => {
           type="text"
           placeholder="Search for a word..."
           value={val}
-          onChange={handleInput}
+          onChange={(e) => setVal(e.target.value)}
           data-testid="search-input"
         />
-        <button onClick={handleSearch} data-testid="search-button">
+        <button 
+          onClick={handleSearch}
+          data-testid="search-button"
+        >
           Search
         </button>
       </div>
 
-      <div className="definition-container">
-        <h3 data-testid="definition-heading">Definition:</h3>
-        {definition && definition !== "Word not found in the dictionary." && (
+      <div data-testid="definition-container">
+        <h3>Definition:</h3>
+        {definition && (
           <p data-testid="definition-text">{definition}</p>
-        )}
-        {definition === "Word not found in the dictionary." && (
-          <p data-testid="not-found-message">{definition}</p>
         )}
       </div>
     </div>
   );
-}
+};
 
-export default App
+export default App;
