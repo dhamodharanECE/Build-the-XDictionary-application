@@ -13,7 +13,7 @@ const App = () => {
 
   const handleSearch = () => {
     if (!val.trim()) {
-      setDefinition("Please enter a word to search");
+      setDefinition("Word not found in the dictionary.");
       return;
     }
   
