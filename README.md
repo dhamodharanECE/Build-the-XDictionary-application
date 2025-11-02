@@ -77,6 +77,7 @@ Follow these steps to run the app locally:
 Clone the Repository
 
 git clone https://github.com/dhamodharanECE/Build-the-XDictionary-application.git
+
 cd xdictionary
 
 
@@ -122,6 +123,6 @@ Overview Figure:
 
 <img width="1920" height="1020" alt="image" src="https://github.com/user-attachments/assets/53b1d6d2-5261-4e33-b531-b9882241a66b" />
 
-1. Development Link:
+Development Link:
 ```base
 https://build-the-x-dictionary-application.vercel.app/
